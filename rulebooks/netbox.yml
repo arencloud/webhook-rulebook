@@ -2,10 +2,12 @@
 - name: Listen for netbox events on a webhook
   hosts: all
   sources:
-    - ansible.eda.webhook:
+    - name: Listen for events
+      ansible.eda.webhook:
         host: 0.0.0.0
         port: 4999
   rules:
-    - name: See all alerts
+    - name: See all other datadog alerts
+      condition: event.meta is defined and event.payload.event_title != "[Triggered] CPU Load is high" and event.payload.event_title != "[Triggered] Web Server is Down"  # noqa yaml[line-length]
       action:
         debug:
