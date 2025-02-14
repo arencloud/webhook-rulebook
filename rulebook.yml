@@ -1,0 +1,13 @@
+---
+- name: Listen for netbox events on a webhook
+  hosts: all
+  sources:
+    - ansible.eda.webhook:
+        host: 0.0.0.0
+        port: 5001
+
+  rules:
+    - name: See all other datadog alerts
+      condition: *
+      action:
+        debug:
