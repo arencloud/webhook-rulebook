@@ -15,4 +15,4 @@
           name: "update vm"
           job_args:
             extra_vars:
-              data: "{{ event.payload.data.cluster }}"
+              data: "{{ event.payload.data }}"
