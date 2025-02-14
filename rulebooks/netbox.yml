@@ -8,8 +8,7 @@
         port: 4999
   rules:
     - name: update vm
-      #condition: event.meta is defined and event.payload.event == "updated" and event.payload.model == "virtualmachine"
-      condition: event.meta is defined and event.payload.event_title != "[Triggered] CPU Load is high"
+      condition: event.meta is defined and event.payload.event == "updated" and event.payload.model == "virtualmachine"
       action:
         run_job_template:
           organization: "Default"
