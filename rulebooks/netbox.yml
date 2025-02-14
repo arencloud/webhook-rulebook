@@ -9,10 +9,11 @@
   rules:
     - name: update vm
       #condition: event.meta is defined and event.payload.event == "updated" and event.payload.model == "virtualmachine"
-      condition: event.meta is defined
+      condition: event.payload.event == "updated" and event.payload.model == "virtualmachine"
       action:
         run_job_template:
           organization: "Default"
           name: "update vm"
-          extra_vars:
-            data: "{{ event.payload.data.cluster }}"
+          job_args:
+            extra_vars:
+              data: "{{ event.payload.data.cluster }}"
