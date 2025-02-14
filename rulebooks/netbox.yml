@@ -9,7 +9,7 @@
   rules:
     - name: update vm
       #condition: event.meta is defined and event.payload.event == "updated" and event.payload.model == "virtualmachine"
-      condition: event.meta is defined and event.payload.event_title != "[Triggered] CPU Load is high" and event.payload.event_title != "[Triggered] Web Server is Down"  # noqa yaml[line-length]
+      condition: event.meta is defined and event.payload.event_title != "[Triggered] CPU Load is high"
       action:
         run_job_template:
           organization: "Default"
